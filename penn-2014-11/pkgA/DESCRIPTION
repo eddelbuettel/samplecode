@@ -1,0 +1,9 @@
+Package: pkgA
+Type: Package
+Title: A First Test
+Version: 0.0.1
+Date: 2014-11-15
+Author: Dirk Eddelbuettel
+Maintainer: Dirk Eddelbuettel <edd@debian.org>
+Description: A minimal package
+License: GPL (>= 2)
