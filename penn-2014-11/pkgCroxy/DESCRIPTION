@@ -1,0 +1,9 @@
+Package: pkgC
+Type: Package
+Title: A Third Test
+Version: 0.0.1
+Date: 2014-11-15
+Author: Dirk Eddelbuettel
+Maintainer: Dirk Eddelbuettel <edd@debian.org>
+Description: A third minimal package
+License: GPL (>= 2)
