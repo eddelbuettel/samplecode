@@ -1,0 +1,3 @@
+useDynLib(pkgF)
+importFrom(Rcpp, evalCpp)
+exportPattern("^[[:alpha:]]+")
