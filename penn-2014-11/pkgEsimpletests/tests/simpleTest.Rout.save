@@ -1,0 +1,32 @@
+
+R version 3.1.2 (2014-10-31) -- "Pumpkin Helmet"
+Copyright (C) 2014 The R Foundation for Statistical Computing
+Platform: i686-pc-linux-gnu (32-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> 
+> library(pkgEsimpletests)
+> 
+> set.seed(123)     # be reproducible
+> x <- rnorm(1000)  # some data
+> res <- myqs(x)    # run our function of interest
+> print(res)        # print result        
+          1%           5%          10%          50%          90%          95% 
+-2.158176203 -1.622584310 -1.267328289  0.009209639  1.254751947  1.676133871 
+         99% 
+ 2.397645689 
+> 
+> proc.time()
+   user  system elapsed 
+  0.312   0.352   0.271 
