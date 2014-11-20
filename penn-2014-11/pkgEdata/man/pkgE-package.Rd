@@ -1,6 +1,6 @@
-\name{pkgE-package}
-\alias{pkgE-package}
-\alias{pkgE}
+\name{pkgEdata-package}
+\alias{pkgEdata-package}
+\alias{pkgEdata}
 \docType{package}
 \title{
   A short title line describing what the package does
