@@ -1,0 +1,51 @@
+\documentclass[11pt]{article}
+%\VignetteIndexEntry{pkgEvignette}
+%\VignetteKeywords{package,example}
+%\VignettePackage{pkgEvignette}
+
+%\usepackage[authoryear,round,longnamesfirst]{natbib}
+%\usepackage[bf,sf,compact,small]{titlesec}
+
+\usepackage[margin=1in,paper=letterpaper]{geometry}
+
+\usepackage[T1]{fontenc}
+\usepackage{pslatex}        % just like RJournal
+\usepackage{palatino,mathpazo}
+
+\newcommand{\proglang}[1]{\textsf{#1}}
+\newcommand{\pkg}[1]{{\fontseries{b}\selectfont #1}}
+\newcommand{\code}[1]{\texttt{#1}}
+
+\newcommand{\R}{\proglang{R}\ } % NB forces a space so not good before % fullstop etc.
+\newcommand{\Rns}{\proglang{R}} % without the space
+
+
+<<echo=FALSE,print=FALSE>>=
+prettyVersion <- packageDescription("pkgEvignette")[["Version"]]
+prettyDate <- format(Sys.Date(), "%B %e, %Y")
+@
+
+\author{Some Author}
+\title{\pkg{pkgEvignette}: A small Example}
+\date{\pkg{pkgEvignette} version \Sexpr{prettyVersion} as of \Sexpr{prettyDate}}
+
+\begin{document}
+\maketitle
+
+\abstract{
+  \noindent Not much to say at this point.
+}
+
+\section{Some Text}
+
+Some code:
+
+<<sample,fig=TRUE>>=
+set.seed(123)
+x <- cumsum(rnorm(100))
+plot(x, type='l', main="A random walk")
+@ 
+
+Code in a line: \Sexpr{sqrt(3)}.
+
+\end{document}

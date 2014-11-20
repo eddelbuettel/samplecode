@@ -1,0 +1,9 @@
+Package: pkgEvignette
+Type: Package
+Title: What the package does (short line)
+Version: 1.0
+Date: 2014-11-20
+Author: Your Name
+Maintainer: Your Name <your@email.com>
+Description: More about what it does (maybe more than one line)
+License: GPL (>= 2)
