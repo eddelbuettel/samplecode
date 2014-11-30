@@ -39,23 +39,14 @@ shinyServer(function(input, output) {
                      s15y = 0.055175)
 
     times <- seq(0,10,.1)
-
-    
-    ## Reactive expression to generate the requested distribution.
-    ## This is called whenever the inputs change. The output
-    ## functions defined below then all use the value computed from
-    ## this expression
+   
+    ## Reactive expression to generate the requested curves.
     data <- reactive({
         params$interpHow <- input$interpolation
         curve <- DiscountCurve(params, tsQuotes, times)
     })
 
-    
-    ## Generate a plot of the data. Also uses the inputs to build
-    ## the plot label. Note that the dependencies on both the inputs
-    ## and the data reactive expression are both tracked, and
-    ## all expressions are called in the sequence implied by the
-    ## dependency graph
+    ## Generate a plot of the data.
     output$plot <- renderPlot({
         interp <- input$interpolation
         crv <- input$curve
