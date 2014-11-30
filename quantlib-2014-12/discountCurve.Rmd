@@ -1,0 +1,26 @@
+---
+title: "DiscountCurve Example"
+author: "Dirk Eddelbuettel"
+date: "11/30/2014"
+output: html_document
+runtime: shiny
+---
+
+This R Markdown document is made interactive using Shiny, following a
+standard examples -- try File -> New File -> R Markdown -> Shiny -> Shiny
+Document. Much more documentation is
+[available on Interactive Documents](http://rmarkdown.rstudio.com/authoring_shiny.html).
+
+### Embed Entire Application
+
+It's also possible to embed an entire Shiny application within an R Markdown
+document using the `shinyAppDir` function. This example embeds a Shiny
+application located in another directory: 
+
+```{r, echo=FALSE}
+shinyAppDir(
+  "discountCurveShiny", options=list(width="100%", height=550)
+)
+```
+
+
