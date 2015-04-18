@@ -1,0 +1,95 @@
+---
+title: "Gapminder: First Exercises"
+author: "Dirk Eddelbuettel"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+### Loading Data and First Summaries
+
+```{r}
+library("gapminder")
+## Structure
+str(gapminder)
+## Top of data
+head(gapminder)
+## Summary
+summary(gapminder)
+## Tabulation of one variable
+table(gapminder$continent)
+## Example aggregate() use
+aggregate(lifeExp ~ continent, gapminder, median)
+```
+
+
+### Single Country through Time, Standard Plot
+
+```{r}
+plot(lifeExp ~ year, gapminder, subset = country == "Cambodia", type = "b")
+```
+
+### Scatter plot: life expectancy as a function of GDP
+
+```{r}
+plot(lifeExp ~ gdpPercap, gapminder, subset = year == 2007, log = "x")
+```
+
+#### Summaries via aggregate as a one-liner
+
+```{r}
+aggregate(lifeExp ~ continent, data=subset(gapminder, year>=2000), median)
+```
+
+
+
+### The plyr Package and its ddply Workhorse
+
+```{r}
+suppressMessages(library("plyr"))
+## Assign
+maxLeByCont <- ddply(gapminder, ~ continent, summarize, maxLe = max(lifeExp))
+maxLeByCont
+```
+
+```{r}
+## Different summarize use
+ddply(gapminder, ~ continent, summarize, nUniqCountries = length(unique(country)))
+```
+
+```{r}
+## Or via function(), note different subsetting
+ddply(gapminder, ~ continent, function(x) c(nUniqCountries = length(unique(x$country))))
+```
+
+```{r}
+## multiple results
+ddply(gapminder, ~ continent, 
+      summarize, min_le = min(lifeExp), max_le = max(lifeExp), med_gdppc = median(gdpPercap))
+```
+
+
+
+### Fitter function
+
+```{r}
+myLinFit <- function(dat, offset = 1952) {
+  theFit <- lm(lifeExp ~ I(year - offset), dat)
+  setNames(coef(theFit), c("intercept", "slope"))
+}
+
+myLinFit(subset(gapminder, country == "Canada"))
+```
+
+Using this over all countries:
+
+```{r}
+allcoefs <- ddply(gapminder, ~ country, myLinFit)
+str(allcoefs)
+head(allcoefs)
+```
+
+Plot all coef pairs:
+
+```{r}
+plot(allcoefs$intercept, allcoefs$slope)
+```
