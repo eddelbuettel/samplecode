@@ -1,0 +1,6 @@
+Use 
+
+  r -lrmarkdown -e'run(default_file="markdownSimple.Rmd", shiny_args=list(port=8008))'
+
+  r -lrmarkdown -e'run(default_file="discountCurve.Rmd", shiny_args=list(port=8008))'
+
