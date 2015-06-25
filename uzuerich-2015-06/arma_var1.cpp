@@ -13,3 +13,9 @@ arma::mat rcppSim(const arma::mat& coeff, const arma::mat& errors) {
     }
     return simdata;
 }
+
+/*** R
+a <- matrix(c(0.5,0.1,0.1,0.5),2,2)
+e <- matrix(rnorm(10000),ncol=2)
+head(rcppSim(a, e))
+*/

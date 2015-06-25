@@ -3,6 +3,6 @@
 
 // [[Rcpp::export]]
 SEXP fun(Rcpp::Function f, SEXP x) {
-    return f(x);
+    return ::f(x);
 }
 
