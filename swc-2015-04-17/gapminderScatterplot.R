@@ -17,8 +17,8 @@ p + geom_point() + scale_x_log10()
 
 #' let's make that stick
 p <- p + scale_x_log10()
-#' common workflow: gradually build up the plot you want  
-#' re-define the object 'p' as you develop "keeper" commands  
+#' common workflow: gradually build up the plot you want
+#' re-define the object 'p' as you develop "keeper" commands
 
 #' convey continent by color: MAP continent variable to aesthetic color
 p + geom_point(aes(color = continent))
@@ -29,28 +29,28 @@ ggplot(gDat, aes(x = gdpPercap, y = lifeExp, color = continent)) +
 p + geom_point(alpha = (1/3), size = 3)
 
 #' add a fitted curve or line
-p + geom_point() + geom_smooth()
-p + geom_point() + geom_smooth(lwd = 3, se = FALSE)
+p + geom_point() + geom_smooth(method="loess")
+p + geom_point() + geom_smooth(lwd = 3, se = FALSE, method="loess")
 p + geom_point() + geom_smooth(lwd = 3, se = FALSE, method = "lm")
 
 #' revive our interest in continents!
 #p + aes(color = continent) + geom_point() + geom_smooth(lwd = 3, se = FALSE)
-p + aes(color = continent) + geom_point() + geom_smooth(lwd = 1, se = FALSE)
+p + aes(color = continent) + geom_point() + geom_smooth(lwd = 1, se = FALSE, method="loess")
 
 #' facetting: another way to exploit a factor
 p + geom_point(alpha = (1/3), size = 3) + facet_wrap(~ continent)
 p + geom_point(alpha = (1/3), size = 3) + facet_wrap(~ continent) +
-    geom_smooth(lwd = 2, se = FALSE)
+    geom_smooth(lwd = 2, se = FALSE, method="loess")
 
-#' exercises:  
+#' exercises:
 
-#' * plot lifeExp against year  
+#' * plot lifeExp against year
 
-#' * make mini-plots, split out by continent  
+#' * make mini-plots, split out by continent
 
-#' * add a fitted smooth and/or linear regression, w/ or w/o facetting  
+#' * add a fitted smooth and/or linear regression, w/ or w/o facetting
 
-#' * other ideas?  
+#' * other ideas?
 
 
 
@@ -74,17 +74,17 @@ y + geom_smooth(se = FALSE, lwd = 2) +
 y + geom_smooth(se = FALSE, lwd = 2) +
     facet_wrap(~ continent)
 
-#' last bit on scatterplots  
-#' how can we "connect the dots" for one country?  
+#' last bit on scatterplots
+#' how can we "connect the dots" for one country?
 #' i.e. make a spaghetti plot?
 y + facet_wrap(~ continent) + geom_line() # uh, no
 y + facet_wrap(~ continent) + geom_line(aes(group = country)) # yes!
 y + facet_wrap(~ continent) + geom_line(aes(group = country)) +
-    geom_smooth(se = FALSE, lwd = 2) 
+    geom_smooth(se = FALSE, lwd = 2)
 
 #' note about subsetting data
 
-#' sadly, ggplot() does not have a 'subset =' argument  
+#' sadly, ggplot() does not have a 'subset =' argument
 #' so do that 'on the fly' with subset(..., subset = ...)
 ggplot(subset(gDat, country == "Zimbabwe"),
        aes(x = year, y = lifeExp)) + geom_line() + geom_point()
@@ -94,7 +94,7 @@ jCountries <- c("Canada", "Rwanda", "Cambodia", "Mexico")
 ggplot(subset(gDat, country %in% jCountries),
        aes(x = year, y = lifeExp, color = country)) + geom_line() + geom_point()
 
-#' when you really care, make your legend easy to navigate  
+#' when you really care, make your legend easy to navigate
 #' this means visual order = data order = factor level order
 ggplot(subset(gDat, country %in% jCountries),
        aes(x = year, y = lifeExp, color = reorder(country, -1 * lifeExp, max))) +
