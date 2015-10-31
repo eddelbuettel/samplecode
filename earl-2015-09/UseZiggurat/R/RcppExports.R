@@ -5,8 +5,8 @@ callrnorm <- function(n) {
     .Call('UseZiggurat_callrnorm', PACKAGE = 'UseZiggurat', n)
 }
 
-setZigguaratSeed <- function(seed) {
-    invisible(.Call('UseZiggurat_setZigguaratSeed', PACKAGE = 'UseZiggurat', seed))
+setZigguratSeed <- function(seed) {
+    invisible(.Call('UseZiggurat_setZigguratSeed', PACKAGE = 'UseZiggurat', seed))
 }
 
 callZiggurat <- function(n) {

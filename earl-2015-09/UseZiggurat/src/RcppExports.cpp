@@ -16,13 +16,13 @@ BEGIN_RCPP
     return __result;
 END_RCPP
 }
-// setZigguaratSeed
-void setZigguaratSeed(const int seed);
-RcppExport SEXP UseZiggurat_setZigguaratSeed(SEXP seedSEXP) {
+// setZigguratSeed
+void setZigguratSeed(const int seed);
+RcppExport SEXP UseZiggurat_setZigguratSeed(SEXP seedSEXP) {
 BEGIN_RCPP
     Rcpp::RNGScope __rngScope;
     Rcpp::traits::input_parameter< const int >::type seed(seedSEXP);
-    setZigguaratSeed(seed);
+    setZigguratSeed(seed);
     return R_NilValue;
 END_RCPP
 }

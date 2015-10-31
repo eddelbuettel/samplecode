@@ -4,7 +4,7 @@
 static Ziggurat::LZLLV::ZigguratLZLLV z;
 
 // [[Rcpp::export]]
-void setZigguaratSeed(const int seed) {
+void setZigguratSeed(const int seed) {
     z.setSeed(seed);
 }
 
