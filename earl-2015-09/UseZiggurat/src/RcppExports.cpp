@@ -17,24 +17,23 @@ BEGIN_RCPP
 END_RCPP
 }
 // setZigguaratSeed
-bool setZigguaratSeed(const int seed);
+void setZigguaratSeed(const int seed);
 RcppExport SEXP UseZiggurat_setZigguaratSeed(SEXP seedSEXP) {
 BEGIN_RCPP
-    Rcpp::RObject __result;
     Rcpp::RNGScope __rngScope;
     Rcpp::traits::input_parameter< const int >::type seed(seedSEXP);
-    __result = Rcpp::wrap(setZigguaratSeed(seed));
-    return __result;
+    setZigguaratSeed(seed);
+    return R_NilValue;
 END_RCPP
 }
 // callZiggurat
-Rcpp::NumericVector callZiggurat(Rcpp::NumericVector X);
-RcppExport SEXP UseZiggurat_callZiggurat(SEXP XSEXP) {
+Rcpp::NumericVector callZiggurat(int n);
+RcppExport SEXP UseZiggurat_callZiggurat(SEXP nSEXP) {
 BEGIN_RCPP
     Rcpp::RObject __result;
     Rcpp::RNGScope __rngScope;
-    Rcpp::traits::input_parameter< Rcpp::NumericVector >::type X(XSEXP);
-    __result = Rcpp::wrap(callZiggurat(X));
+    Rcpp::traits::input_parameter< int >::type n(nSEXP);
+    __result = Rcpp::wrap(callZiggurat(n));
     return __result;
 END_RCPP
 }

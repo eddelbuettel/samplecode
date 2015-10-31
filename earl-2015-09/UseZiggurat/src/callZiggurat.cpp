@@ -4,14 +4,13 @@
 static Ziggurat::LZLLV::ZigguratLZLLV z;
 
 // [[Rcpp::export]]
-bool setZigguaratSeed(const int seed) {
+void setZigguaratSeed(const int seed) {
     z.setSeed(seed);
-    return true;
 }
 
 // [[Rcpp::export]]
-Rcpp::NumericVector callZiggurat(Rcpp::NumericVector X) {
-    int n = X.length();
+Rcpp::NumericVector callZiggurat(int n) {
+    Rcpp::NumericVector X(n);
     for (int i=0; i<n; i++) {
         X(i) = z.norm();   // Ziggurat draw
     }
